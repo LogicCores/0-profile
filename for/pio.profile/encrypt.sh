@@ -25,15 +25,18 @@ function init {
     	fi
 
         # TODO: Make this search path configurable
-        pushd "$__BO_DIR__/../../../../data" > /dev/null
-            for nsDir in $(find ./* -type d); do
-            	if [ -d "$nsDir/Deployments" ]; then
-		            for locationDir in $(find $nsDir/Deployments/* -type d); do
-		                "$__BO_DIR__/../../../../lib/pio.profile/bin/pio-profile-encrypt" \
-		                    "$locationDir/profile.ccjson"
-		            done
-		        fi
+        pushd "$__BO_DIR__/../../../../_Deployments" > /dev/null
+            for file in $(find ./*.profile.ccjson); do
+                "$__BO_DIR__/../../../../lib/pio.profile/bin/pio-profile-encrypt" "$file"
             done
+#            for nsDir in $(find ./* -type d); do
+#            	if [ -d "$nsDir/Deployments" ]; then
+#		            for locationDir in $(find $nsDir/Deployments/* -type d); do
+#		                "$__BO_DIR__/../../../../lib/pio.profile/bin/pio-profile-encrypt" \
+#		                    "$locationDir/profile.ccjson"
+#		            done
+#		        fi
+#            done
         popd > /dev/null
 
 		BO_format "$VERBOSE" "FOOTER"

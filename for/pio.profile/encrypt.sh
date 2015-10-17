@@ -25,7 +25,12 @@ function init {
     	fi
 
         # TODO: Make this search path configurable
-        pushd "$__BO_DIR__/../../../../_Deployments" > /dev/null
+        pushd "$__BO_DIR__/../../../../../Deployments" > /dev/null
+            for file in $(find ./*.profile.ccjson); do
+                "$__BO_DIR__/../../../../lib/pio.profile/bin/pio-profile-encrypt" "$file"
+            done
+        popd > /dev/null
+        pushd "$__BO_DIR__/../../../../Deployments" > /dev/null
             for file in $(find ./*.profile.ccjson); do
                 "$__BO_DIR__/../../../../lib/pio.profile/bin/pio-profile-encrypt" "$file"
             done

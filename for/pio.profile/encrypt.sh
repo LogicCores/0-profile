@@ -25,15 +25,15 @@ function init {
     	fi
 
         # TODO: Make this search path configurable
-        pushd "$__BO_DIR__/../../../../../Deployments" > /dev/null
-            for file in $(find ./*.profile.ccjson); do
-                "$__BO_DIR__/../../../../lib/pio.profile/bin/pio-profile-encrypt" "$file"
+        pushd "$WORKSPACE_DIR/Deployments" > /dev/null
+            for file in $(find *.profile.ccjson); do
+                "$Z0_ROOT/lib/pio.profile/bin/pio-profile-encrypt" "$file"
             done
         popd > /dev/null
-        pushd "$__BO_DIR__/../../../../Deployments" > /dev/null
-            for file in $(find ./*.profile.ccjson); do
-                "$__BO_DIR__/../../../../lib/pio.profile/bin/pio-profile-encrypt" "$file"
-            done
+#        pushd "$__BO_DIR__/../../../../Deployments" > /dev/null
+#            for file in $(find ./*.profile.ccjson); do
+#                "$__BO_DIR__/../../../../lib/pio.profile/bin/pio-profile-encrypt" "$file"
+#            done
 #            for nsDir in $(find ./* -type d); do
 #            	if [ -d "$nsDir/Deployments" ]; then
 #		            for locationDir in $(find $nsDir/Deployments/* -type d); do
@@ -42,7 +42,7 @@ function init {
 #		            done
 #		        fi
 #            done
-        popd > /dev/null
+#        popd > /dev/null
 
 		BO_format "$VERBOSE" "FOOTER"
 	}

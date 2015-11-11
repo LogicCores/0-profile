@@ -29,6 +29,9 @@ function init {
             for file in $(find *.profile.ccjson); do
                 "$Z0_ROOT/lib/pio.profile/bin/pio-profile-encrypt" "$file"
             done
+            for file in $(find **/*.profile.ccjson); do
+                "$Z0_ROOT/lib/pio.profile/bin/pio-profile-encrypt" "$file"
+            done
         popd > /dev/null
 #        pushd "$__BO_DIR__/../../../../Deployments" > /dev/null
 #            for file in $(find ./*.profile.ccjson); do

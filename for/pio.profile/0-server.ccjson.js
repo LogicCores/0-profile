@@ -1,8 +1,6 @@
 
 exports.forLib = function (LIB) {
 
-    const PROFILE = require("../../../../lib/pio.profile/0-server.api").forLib(LIB);
-
     return LIB.Promise.resolve({
         forConfig: function (defaultConfig) {
 
@@ -16,6 +14,9 @@ exports.forLib = function (LIB) {
 
                     return LIB.Promise.resolve({
                         decrypt: function () {
+
+                            const PROFILE = require("../../../../lib/pio.profile/0-server.api").forLib(LIB);
+
                             return PROFILE.decrypt(
                                 config.env,
                                 JSON.stringify(aspectConfig)
